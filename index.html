@@ -1,19 +1,23 @@
 <h1>Adle</h1>
 <div>
 <input type="text" id="guess">Guess the word!</input>
+<div id="score"></div>
 <div id="output"></div>
 <script>
 const input = document.querySelector("#guess");
 input.addEventListener('input', (e) => {
   const output = document.querySelector("#output");
   let feedback = '';
+  let score = 0;
   [...input.value].forEach(c => {
     if (c == 'a' || c == 'A') {
       feedback += '🟩';
+      score += 1;
     } else {
       feedback += '🟥';
     }
   });
+  document.querySelector("#score").innerText = `Score: ${score}`;
   output.innerText += feedback + '\n';
 });
 </script>

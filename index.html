@@ -1,6 +1,6 @@
 <h1 id="title">Adle</h1>
 <div>
-<span>Guess the word!</span>
+<span id="prompt">Guess the word!</span>
 <input type="text" id="guess"/>
 <div id="score"></div>
 <div id="output"></div>
@@ -25,7 +25,7 @@ input.addEventListener('input', (e) => {
   guesses += 1;
   if (guesses >= 6) {
     input.disabled = true;
-    scoreDiv.innerText += '\nGame Over!';
+    document.querySelector('#prompt').innerText = 'Game Over!';
     document.querySelector('#title').innerText = '🅰️dle';
   }
 });

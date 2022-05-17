@@ -1,12 +1,15 @@
-<h1>Adle</h1>
+<h1 id="title">Adle</h1>
 <div>
-<input type="text" id="guess">Guess the word!</input>
+<span>Guess the word!</span>
+<input type="text" id="guess"/>
 <div id="score"></div>
 <div id="output"></div>
 <script>
 const input = document.querySelector("#guess");
+let guesses = 0;
 input.addEventListener('input', (e) => {
   const output = document.querySelector("#output");
+  const scoreDiv = document.querySelector("#score");
   let feedback = '';
   let score = 0;
   [...input.value].forEach(c => {
@@ -17,8 +20,14 @@ input.addEventListener('input', (e) => {
       feedback += '🟥';
     }
   });
-  document.querySelector("#score").innerText = `Score: ${score}`;
+  scoreDiv.innerText = `Score: ${score}`;
   output.innerText += feedback + '\n';
+  guesses += 1;
+  if (guesses >= 6) {
+    input.disabled = true;
+    scoreDiv.innerText += '\nGame Over!';
+    document.querySelector('#title').innerText = '🅰️dle';
+  }
 });
 </script>
 </div>
